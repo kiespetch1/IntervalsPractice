@@ -1,0 +1,73 @@
+﻿@using IntervalsPractice.BaseClasses
+<h3>Text Practice</h3>
+@CurrentTaskText 
+<br/>
+<select
+    @bind="Characteristic">
+        <option class="dropdown-item">Characteristic</option>
+        <option class="dropdown-item">Perfect</option>
+        <option class="dropdown-item">Minor</option>
+        <option class="dropdown-item">Major</option>
+        <option class="dropdown-item">Augmented</option>
+        <option class="dropdown-item">Diminished</option>
+        </select>
+<select
+    @bind="BaseInterval">
+        <option class="dropdown-item">Interval</option>
+        <option class="dropdown-item">Prime</option>
+        <option class="dropdown-item">Second</option>
+        <option class="dropdown-item">Third</option>
+        <option class="dropdown-item">Fourth</option>
+        <option class="dropdown-item">Fifth</option>
+        <option class="dropdown-item">Sixth</option>
+        <option class="dropdown-item">Seventh</option>
+        <option class="dropdown-item">Octave</option>
+    </select>
+<!--      <input
+              @bind-value="@answer"/>
+              -->
+<br/>
+<button 
+    style ="margin-top: 2px;
+            margin-bottom: 6px;"
+    class="btn btn-primary"
+     @onclick="ValidateTextPractice">Check my answer</button>
+<button
+    style ="margin-top: 2px;
+            margin-bottom: 6px;"
+    class="btn btn-primary"
+    @onclick="RefreshTask">New task</button>
+@if (IsAnswerCorrect)
+{ <p
+      style="background: rgba(136,227,148,0.74);
+                 border: 1px solid rgba(112,210,46,0.74);
+                 padding: 5px;
+                 border-radius: 5px;"><b>
+             
+             <div
+                 hidden="@IsTaskChanged">@ValidationAnswer 
+                 </div>
+             </b> 
+             <div
+                 hidden="@IsTaskChanged">@AnswerDetails<br/> 
+                 </div>
+      <div
+          hidden="@IsTaskChanged"> <i>@Hint</i>
+          </div>
+      </p>
+}
+else
+{
+    
+    <div
+        hidden="@IsTaskChanged">
+        <p>
+            <b>
+                @ValidationAnswer
+            </b>
+            @AnswerDetails 
+            @Hint
+            </p>
+        </div>
+    
+}
